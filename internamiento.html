@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consentimiento Informado - Internamiento</title>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root { --primary-color:#3a7ca5; --secondary-color:#f8f9fa; --accent-color:#63c5da; --text-color:#2c3e50; --border-color:#d1e7f0; --shadow-color:rgba(0,0,0,0.1); }
+        body{font-family:'Segoe UI',Arial,sans-serif;margin:0;padding:20px;background:#f5f7fa;color:var(--text-color);}
+        .container{width:800px;margin:0 auto;padding:30px;background:white;border:1px solid var(--border-color);box-shadow:0 5px 20px var(--shadow-color);border-radius:12px;margin-bottom:40px;}
+        .header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--accent-color);padding-bottom:15px;margin-bottom:20px;}
+        .logo{max-width:80px;border-radius:10px;box-shadow:0 2px 5px var(--shadow-color);}
+        h1{flex:1;text-align:center;color:var(--primary-color);font-size:1.6rem;text-shadow:1px 1px 2px var(--shadow-color);}
+        .date-short{font-size:0.9rem;font-weight:bold;}
+        p, ul{margin-bottom:20px;line-height:1.6;text-align:justify;}
+        input[type="text"]{border:none;background:transparent;font-weight:bold;padding:4px 8px;min-height:30px;}
+        input[type="text"]:focus{outline:none;background:var(--secondary-color);}
+        .signature-area{display:flex;justify-content:center;margin-top:40px;}
+        .firma-container{display:flex;flex-direction:column;align-items:center;flex:1;}
+        .signature-box{background:var(--secondary-color);padding:10px;border-radius:5px;width:100%;text-align:center;margin-bottom:10px;font-weight:500;}
+        .signature-pad{width:100%;height:200px;border:2px dashed var(--border-color);border-radius:8px;background:white;box-shadow:0 2px 8px var(--shadow-color);}
+        .signature-buttons{margin-top:10px;}
+        .pdf-button-container{text-align:center;margin-top:30px;}
+        .pdf-button{padding:12px 25px;background:#4CAF50;color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer;}
+        .pdf-button:hover{background:#45a049;}
+    </style>
+</head>
+<body>
+    <div class="container" id="internContent">
+        <div class="header">
+            <img src="empresa.jpg" alt="Veterinaria San Martin de Porres" class="logo">
+            <h1>CONSENTIMIENTO INFORMADO PARA INTERNAMIENTO EN MASCOTAS</h1>
+            <div id="shortDate" class="date-short"></div>
+        </div>
+        <p>
+            Por este medio yo <input type="text" id="ownerName" placeholder="Nombre del propietario">, cédula <input type="text" id="ownerId" placeholder="Cédula">, propietario de la mascota <input type="text" id="petName" placeholder="Nombre de la mascota">, de la raza <input type="text" id="petBreed" placeholder="Raza">, número de expediente <input type="text" id="recordNum" placeholder="N° de expediente">, soy consciente del estado de salud actual de mi mascota en el cual lo estoy internando. Estoy completamente claro que a pesar de los esfuerzos médicos, dejarla bajo internamiento y realizar exámenes de sangre completos sé que mi mascota puede llegar a fallecer en cualquier momento, además sé que mi mascota puede llegar a presentar bradicardia, hipotermia, hipovolemia, hemorragias activas, infecciones, reacciones a la anestesia, anemia, necrosis tisular, sepsis, paro cardio respiratorio, fallecimiento, anemia asociada entre otros derivados de su condición o llegar a necesitar más intervenciones o exámenes, además de una extensa recuperación bajo internamiento o en casa.
+        </p>
+        <p>
+            Hago constar que comprendo del proceso que se va a realizar, sus riesgos y que se me ha explicado, recomendado y aclarado todas las dudas que me hayan surgido al respecto, dejo a mi mascota por voluntad propia. Además soy consciente que la recuperación de mi mascota dependerá de su estado de salud en general y del cumplimiento de las indicaciones y cuidados posteriores a su egreso. Acepto la responsabilidad de seguir todas las recomendaciones para garantizar una recuperación exitosa.
+        </p>
+        <p><strong>Autorizo al equipo veterinario a tomar decisiones adicionales durante el internamiento si identifican complicaciones imprevistas, siempre en el mejor interés de la salud de mi mascota.</strong></p>
+        <p>Firmo en pleno uso de mis facultades mentales afirmando que he leído y comprendido todo lo descrito en este documento a las <span id="intTime"></span> horas, del día <span id="intDay"></span> del mes <span id="intMonth"></span> del año <span id="intYear"></span>.</p>
+        <div class="signature-area">
+            <div class="firma-container">
+                <div class="signature-box">Firma del propietario</div>
+                <canvas class="signature-pad" id="internSigPad"></canvas>
+                <div class="signature-buttons"><button type="button" onclick="clearSignature('internSigPad')">Limpiar</button></div>
+            </div>
+        </div>
+        <div class="pdf-button-container"><button class="pdf-button" onclick="generatePDF()">Generar PDF</button></div>
+    </div>
+    <div class="main-menu">
+        <div class="menu-options">
+            <a href="hoja_lab.html" class="menu-card lab">
+                <span>Hoja de Laboratorio</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const now = new Date();
+            document.getElementById('shortDate').textContent = now.toLocaleDateString('es-ES');
+            document.getElementById('intTime').textContent = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+            document.getElementById('intDay').textContent = now.getDate();
+            document.getElementById('intMonth').textContent = now.toLocaleString('es-ES',{month:'long'});
+            document.getElementById('intYear').textContent = now.getFullYear();
+            const canvas = document.getElementById('internSigPad');
+            function resize(c){const r=Math.max(window.devicePixelRatio||1,2);c.width=c.offsetWidth*r; c.height=c.offsetHeight*r; c.getContext('2d').scale(r,r);} resize(canvas);
+            window.signaturePads = { internSigPad: new SignaturePad(canvas, {
+                backgroundColor: 'rgba(255,255,255,0)',
+                penColor: 'rgb(0,0,100)',
+                minWidth: 0.3,    // thinner stroke
+                maxWidth: 1.5     // reduced max thickness
+            })};
+            window.addEventListener('resize', ()=>resize(canvas));
+        });
+        function clearSignature(id){window.signaturePads[id].clear();}
+        async function generatePDF(){
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p','mm','a4');
+            const cont = document.getElementById('internContent');
+            const canvas = await html2canvas(cont,{scale:1.5,useCORS:true,backgroundColor:'#fff'});
+            const img = canvas.toDataURL('image/jpeg',0.7);
+            const imgW = 140, pgH = 297;
+            const imgH = (canvas.height * imgW)/canvas.width;
+            const x = (pdf.internal.pageSize.getWidth() - imgW)/2;
+            const y = (pgH - imgH)/2;
+            let ownerLastName = '';
+            const ownerName = document.getElementById('ownerName').value;
+            const petName = document.getElementById('petName').value;
+            if (ownerName && ownerName.trim().split(' ').length > 1) {
+                const parts = ownerName.trim().split(' ');
+                ownerLastName = parts.length > 2 ? parts[parts.length - 1] : parts[1];
+            }
+            pdf.addImage(img,'JPEG',x,y,imgW,imgH);
+            pdf.save(`Internamiento_${petName}_${ownerLastName}.pdf`);
+        }
+    </script>
+</body>
+</html>

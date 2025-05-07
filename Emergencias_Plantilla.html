@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consentimiento Veterinario</title>
+    <style>
+        :root {
+            --primary-color: #3a7ca5;
+            --secondary-color: #f8f9fa;
+            --accent-color: #63c5da;
+            --text-color: #2c3e50;
+            --border-color: #d1e7f0;
+            --highlight-color: #e3f2fd;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --input-bg: #f0f7fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4eff5 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 800px; /* Cambia max-width por width para html2canvas */
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .container:hover {
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+        }
+        
+        .logo {
+            max-width: 80px;
+            margin-right: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            flex-grow: 1;
+            font-size: 1.6rem;
+            text-shadow: 1px 1px 2px var(--shadow-color);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        input[type="text"] {
+            border: none;
+            background-color: transparent;
+            padding: 8px 12px; /* mantener tamaño grande */
+            margin: 0;         /* alineados con el texto */
+            border-radius: 0;
+            font-weight: bold;
+            min-height: 35px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-bottom-color: var(--primary-color);
+            background-color: var(--highlight-color);
+            box-shadow: 0 3px 8px var(--shadow-color);
+        }
+        
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .firma-container {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .signature-box {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .signature-pad-container {
+            width: 100%;
+        }
+        
+        .signature-pad {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            width: 100%;
+            height: 250px; /* Cambiado de 150px a 250px */
+            background-color: white;
+            touch-action: none; /* Previene acciones táctiles del navegador */
+            -webkit-touch-callout: none; /* Deshabilita el callout en iOS */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Estándar */
+            box-shadow: 0 2px 8px var(--shadow-color);
+            transition: border 0.3s ease;
+        }
+        
+        .signature-pad:hover {
+            border-color: var(--accent-color);
+        }
+        
+        .signature-buttons {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .pdf-button-container {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .pdf-button {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .pdf-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .pdf-button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+            padding-left: 20px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 10px;
+            }
+            
+            .signature-buttons {
+                display: none;
+            }
+
+            .pdf-button-container {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .signature-area {
+                flex-direction: column;
+            }
+            
+            .firma-container {
+                width: 100%;
+            }
+        }
+
+        .date-short {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        /* Menú principal */
+        .main-menu-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .main-menu {
+            background: linear-gradient(120deg, #e3f2fd 0%, #f8f9fa 100%);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px var(--shadow-color);
+            padding: 32px 24px 24px 24px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .menu-logo {
+            max-width: 90px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+        .main-menu h2 {
+            color: var(--primary-color);
+            margin-bottom: 28px;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .menu-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+        }
+        .menu-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 70px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+            border: 2px solid var(--border-color);
+            position: relative;
+        }
+        .menu-card:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 6px 18px var(--shadow-color);
+            border-color: var(--primary-color);
+        }
+        .menu-card.anestesia { border-left: 6px solid #3a7ca5; }
+        .menu-card.cirugia { border-left: 6px solid #e67e22; }
+        .menu-card.emergencias { border-left: 6px solid #c0392b; }
+        .menu-card.internamiento { border-left: 6px solid #16a085; }
+        .menu-card.transfusion { border-left: 6px solid #8e44ad; }
+        .menu-card.cesarea { border-left: 6px solid #d35400; }
+        .menu-card.eutanasia { border-left: 6px solid #b71c1c; }
+        @media (max-width: 800px) {
+            .main-menu { max-width: 98vw; }
+            .menu-card { width: 98vw; max-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú principal de selección de plantillas -->
+    <div class="main-menu-container">
+        <div class="main-menu">
+            <img src="empresa.jpg" alt="Veterinaria San Martin de Porres" class="menu-logo">
+            <h2>SELECCIONA UNA PLANTILLA</h2>
+            <div class="menu-options">
+                <a href="index.html" class="menu-card anestesia">
+                    <span>Autorización para Anestesia</span>
+                </a>
+                <a href="consentimiento_cirugia.html" class="menu-card cirugia">
+                    <span>Consentimiento Cirugía</span>
+                </a>
+                <a href="Emergencias_Plantilla.html" class="menu-card emergencias">
+                    <span>Emergencias</span>
+                </a>
+                <a href="internamiento.html" class="menu-card internamiento">
+                    <span>Internamiento</span>
+                </a>
+                <a href="transfusion.html" class="menu-card transfusion">
+                    <span>Transfusión</span>
+                </a>
+                <a href="consentimiento_cesarea.html" class="menu-card cesarea">
+                    <span>Consentimiento Cesárea</span>
+                </a>
+                <a href="consentimiento_eutanasia.html" class="menu-card eutanasia">
+                    <span>Consentimiento Eutanasia</span>
+                </a>
+                <a href="hoja_lab.html" class="menu-card lab">
+                    <span>Hoja de Laboratorio</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="pdf-content">
+        <div class="header">
+            <img src="empresa.jpg" alt="Veterinaria San Martín de Porres" class="logo">
+            <h1>CONSENTIMIENTO INFORMADO PARA ATENCIÓN VETERINARIA DE EMERGENCIA EN MASCOTAS</h1>
+            <div id="shortDate" class="date-short"></div>
+        </div>
+        
+        <p>
+            Por este medio yo <input type="text" id="ownerName" placeholder="Nombre del propietario" required>, propietario de la mascota <input type="text" id="petName" placeholder="Nombre de la mascota" required>, de la raza <input type="text" id="petBreed" placeholder="Raza" required>, número de expediente <input type="text" id="expedientNumber" placeholder="Número de expediente" required>, acepto las siguientes condiciones relacionadas con la atención de la emergencia para mi mascota en la Clínica Veterinaria San Martín de Porres.
+        </p>
+        <p>
+            1. Entiendo que en situaciones de emergencia y en ausencia de un médico veterinario disponible, mi mascota puede ser atendida por un asistente veterinario en la clínica.<br>
+            2. Acepto que el asistente veterinario puede realizar valoraciones iniciales, tratamiento de emergencia y si es necesario dejar a mi mascota internada hasta la llegada de un médico veterinario durante sus horas laborales.<br>
+            3. Reconozco que esta práctica se lleva a cabo para garantizar la atención inmediata y el bienestar de mi mascota en situaciones de urgencia.<br>
+            4. Comprendo que el asistente veterinario hará todo lo posible por proporcionar cuidado y tratamiento adecuado, pero que la atención completa y diagnóstico definitivo se realizará cuando el médico veterinario esté disponible.
+        </p>
+        <p>
+            Estoy completamente claro que a pesar de los esfuerzos de los asistentes veterinarios, sé que mi mascota puede llegar a complicarse o fallecer en cualquier momento.
+        </p>
+        <p>
+            Hago constar que comprendo el proceso que se va a realizar y soy consciente que la atención del asistente veterinario no es la misma que proporciona un médico veterinario sin embargo, opto por dejar a mi mascota y acepto la atención del asistente de turno. Asimismo, asumo sus riesgos que se me han explicado, recomendado y aclarado todas las dudas que me hayan surgido al respecto, dejo a mi mascota por voluntad propia.
+        </p>
+        <p>
+            Soy consciente que la recuperación de mi mascota dependerá de su estado de salud en general y del cumplimiento de las indicaciones y cuidos posteriores a su egreso. Acepto la responsabilidad de seguir todas las recomendaciones para garantizar una recuperación exitosa. <strong>"Autorizo al equipo veterinario a tomar decisiones adicionales durante el procedimiento si identifican complicaciones imprevistas, siempre en el mejor interés de la salud de mi mascota"</strong>
+        </p>
+        <p>
+            Firmo en pleno uso de mis facultades mentales afirmando que he leído y comprendido todo lo descrito en este documento, a las <span id="currentTime"></span> horas, del día <span id="currentDay"></span> del mes <span id="currentMonth"></span> del <span id="currentYear"></span>.
+        </p>
+        <div class="signature-area">
+            <div class="firma-container">
+                <div class="signature-box">Firma del propietario</div>
+                <div class="signature-pad-container">
+                    <canvas class="signature-pad" id="ownerSignaturePad"></canvas>
+                    <div class="signature-buttons">
+                        <button type="button" onclick="clearSignature('ownerSignaturePad')">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+                </div>
+                <div class="footer">
+                    Veterinaria San Martín de Porres - Todos los derechos reservados
+                </div>
+            </div>
+        </div>
+        <div class="pdf-button-container">
+            <button class="pdf-button" onclick="generatePDF()">Generar PDF</button>
+        </div>
+    </div>
+
+    <!-- Signature Pad library -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+    <!-- HTML2Canvas para capturar todo el documento -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script>
+        // Set the current date and time
+        const now = new Date();
+        document.getElementById('shortDate').textContent = now.toLocaleDateString('es-ES');
+        document.getElementById('currentTime').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('currentDay').textContent = now.getDate();
+        document.getElementById('currentMonth').textContent = now.toLocaleString('es-ES', { month: 'long' });
+        document.getElementById('currentYear').textContent = now.getFullYear();
+
+        // Initialize signature pads
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvasElements = document.querySelectorAll('.signature-pad');
+            
+            // Resize canvas for better resolution
+            function resizeCanvas(canvas) {
+                const ratio = Math.max(window.devicePixelRatio || 1, 2);
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext('2d').scale(ratio, ratio);
+                
+                const ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                
+                return ratio;
+            }
+            
+            // Initialize SignaturePad for all canvas elements
+            window.signaturePads = {};
+            
+            canvasElements.forEach(canvas => {
+                const pixelRatio = resizeCanvas(canvas);
+                
+                window.signaturePads[canvas.id] = new SignaturePad(canvas, {
+                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                    penColor: 'rgb(0, 0, 100)',
+                    velocityFilterWeight: 0.5,
+                    minWidth: 0.3,                // thinner stroke
+                    maxWidth: 1.5 * pixelRatio,   // reduced max thickness
+                    throttle: 8,
+                    minDistance: 1.0
+                });
+                
+                ['touchstart', 'touchmove', 'touchend'].forEach(eventName => {
+                    canvas.addEventListener(eventName, function(event) {
+                        if (event.cancelable) {
+                            event.preventDefault();
+                        }
+                    }, { passive: false });
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                canvasElements.forEach(canvas => {
+                    if (window.signaturePads[canvas.id]) {
+                        const data = window.signaturePads[canvas.id].isEmpty() ? 
+                            null : window.signaturePads[canvas.id].toData();
+                        const pixelRatio = resizeCanvas(canvas);
+                        window.signaturePads[canvas.id].clear();
+                        if (data) window.signaturePads[canvas.id].fromData(data);
+                    }
+                });
+            });
+        });
+
+        // Clear the signature pad
+        function clearSignature(canvasId) {
+            if (window.signaturePads && window.signaturePads[canvasId]) {
+                window.signaturePads[canvasId].clear();
+            }
+        }
+        
+        // Generate PDF en una sola página A4 escalada (todo el contenido comprimido)
+        async function generatePDF() {
+            const ownerName = document.getElementById('ownerName').value;
+            const petName = document.getElementById('petName').value;
+            if (!ownerName || !petName) {
+                alert("Complete nombre del propietario y de la mascota");
+                return;
+            }
+            let ownerLastName = '';
+            if (ownerName && ownerName.trim().split(' ').length > 1) {
+                const parts = ownerName.trim().split(' ');
+                ownerLastName = parts.length > 2 ? parts[parts.length - 1] : parts[1];
+            }
+
+            const container = document.getElementById('pdf-content');
+            const pdfBtn = document.querySelector('.pdf-button-container');
+            const sigBtns = document.querySelectorAll('.signature-buttons');
+            // Ocultar controles para no capturarlos en el PDF
+            const pdfBtnDisplay = pdfBtn.style.display;
+            const sigDisplays = [...sigBtns].map(b => b.style.display);
+            pdfBtn.style.display = 'none';
+            sigBtns.forEach(b => b.style.display = 'none');
+
+            try {
+                // Aumentamos la escala a 2.0 y la calidad JPEG a 0.9 para mayor definición
+                const canvas = await html2canvas(container, {
+                    scale: 2.0,
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                });
+                const imgData = canvas.toDataURL('image/jpeg', 0.9);
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('portrait', 'mm', 'a4');
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const scaleFactor = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
+                const imgWidth = canvas.width * scaleFactor;
+                const imgHeight = canvas.height * scaleFactor;
+                const marginX = (pageWidth - imgWidth) / 2;
+                const marginY = (pageHeight - imgHeight) / 2;
+
+                pdf.addImage(imgData, 'JPEG', marginX, marginY, imgWidth, imgHeight);
+                // Se genera el nombre del archivo con el formato deseado:
+                // "Consentimiento_Emergencia_<petName>_<ownerLastName>.pdf"
+                const fileName = `Consentimiento_Emergencia_${petName}_${ownerLastName}.pdf`;
+                pdf.save(fileName);
+            } catch (error) {
+                console.error("Error al generar el PDF:", error);
+                alert("Hubo un problema al generar el PDF. Por favor inténtelo de nuevo.");
+            } finally {
+                pdfBtn.style.display = pdfBtnDisplay;
+                sigBtns.forEach((b, i) => b.style.display = sigDisplays[i]);
+            }
+        }
+    </script>
+</body>
+</html>

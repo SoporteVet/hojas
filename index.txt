@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorización para Anestesia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .underline {
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+        }
+        .checkbox {
+            margin-right: 10px;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .signature {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .notice {
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Autorización para Anestesia</h1>
+        
+        <p>
+            Cualquier procedimiento bajo anestesia genera un riesgo ya que cualquier otro organismo vivo puede reaccionar adversamente ante un agente anestésico, siempre es recomendable realizar exámenes previos, como un hemograma y bioquímica sanguíneas.
+        </p>
+        
+        <p>
+            Estos exámenes son llamados "Perfil Pre-Quirúrgico" y este resultado disminuye el riesgo de administrar anestesia, tiene un costo adicional y si desea realizarlos por favor marque con una "X" donde está indicado, de igual manera el personal médico del Hospital realiza un examen físico objetivo general, para determinar si el paciente se puede someter a anestesia o no.
+        </p>
+        
+        <p>
+            Por lo tanto, Yo <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            Portador del número de identificación <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            número telefónico <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>, 
+            correo electrónico <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            y propietario (a) de la mascota llamada <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            especie: Perro <input type="checkbox" class="checkbox"> / Gato <input type="checkbox" class="checkbox"> / otro <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;</span>, 
+            de raza <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>, 
+            color <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>, 
+            sexo <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            y edad <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            autorizo al personal médico veterinario de la Veterinaria San Martin de Porres para que proceda a realizar el procedimiento <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> a mi mascota.
+        </p>
+        
+        <p>
+            Deseo llevar a cabo los exámenes pre-quirúrgicos recomendados SI <input type="checkbox" class="checkbox"> NO <input type="checkbox" class="checkbox">
+        </p>
+        
+        <p>
+            Ya que me han explicado y conozco los riesgos tanto anestésicos como quirúrgicos que representa dicho procedimiento procedo a autorizar.
+        </p>
+        
+        <div class="signature">
+            <div>Firma: <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+            <div>Fecha: <span class="underline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        </div>
+        
+        <div class="notice">
+            <p><strong>Estimado Cliente:</strong></p>
+            <p class="italic">
+                Si su mascota presenta alguna complicación post-operatoria, se le informa que se puede presentar a revisión en la Veterinaria San Martin de Porres, dicha revisión no tiene costo alguno. Si el paciente es llevado a otro centro médico veterinario, no nos hacemos responsables por los costos, debido a que en el Hospital puede acceder al servicio de ser necesario y sin costo adicional.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
