@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <base href="../../../">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consentimiento Cesárea</title>
+    <title>Consentimiento Eutanasia</title>
     <style>
         :root {
             --primary-color: #3a7ca5;
@@ -315,14 +316,14 @@
 </head>
 <body>
     <!-- Página 1 -->
-    <div class="container" id="cesareaPage1">
+    <div class="container" id="eutanasiaPage1">
         <div class="autocomplete-banner" id="autocompleteBanner">
             <strong>🔄 Autocompletado:</strong> Los datos se completarán automáticamente desde el sistema de tickets veterinario.
         </div>
         
         <div class="header">
             <img src="logo.jpg" alt="Veterinaria San Martin de Porres" class="logo">
-            <h1>CONSENTIMIENTO INFORMADO PARA CESÁREA EN MASCOTAS</h1>
+            <h1>CONSENTIMIENTO INFORMADO PARA EUTANASIA EN MASCOTAS</h1>
             <div id="shortDate" class="date-short"></div>
         </div>
 
@@ -354,12 +355,12 @@
                     <input type="text" id="petName" placeholder="Nombre de la mascota" required>
                 </div>
                 <div class="data-row">
-                    <label>Raza:</label>
-                    <input type="text" id="petBreed" placeholder="Raza de la mascota">
+                    <label>Especie:</label>
+                    <input type="text" id="petSpecies" placeholder="Especie de la mascota">
                 </div>
                 <div class="data-row">
-                    <label>Edad:</label>
-                    <input type="text" id="petAge" placeholder="Edad de la mascota">
+                    <label>Sexo:</label>
+                    <input type="text" id="petSex" placeholder="Sexo de la mascota">
                 </div>
                 <div class="data-row">
                     <label>Expediente:</label>
@@ -369,65 +370,65 @@
         </div>
 
         <p>
-            Yo, <strong id="ownerNameText">[Nombre del propietario]</strong>, propietario(a) de la mascota <strong id="petNameText">[Nombre de la mascota]</strong>, de la raza <strong id="petBreedText">[Raza]</strong>, declaro que he sido debidamente informado sobre el procedimiento quirúrgico de cesárea que se realizará a mi mascota, así como los posibles riesgos y complicaciones que pueden presentarse, tanto para la madre como para sus crías.
+            Yo, <strong id="ownerNameText">[Nombre del propietario o responsable]</strong>, con número de cédula <strong id="ownerCedulaText">[Cédula]</strong>, certifico que soy el propietario legal o una persona autorizada por el propietario legal del animal llamado <strong id="petNameText">[Nombre del animal]</strong>, especie <strong id="petSpeciesText">[Especie]</strong>, sexo <strong id="petSexText">[Sexo]</strong>, y por medio de este documento doy mi consentimiento y autorización expresa para que se practique el procedimiento de eutanasia a dicho paciente.
         </p>
 
         <p>
-            <strong>1. RIESGOS DE LA CIRUGÍA Y LA ANESTESIA</strong>
+            Libero de toda responsabilidad legal, civil y profesional al médico veterinario(a) tratante y al establecimiento veterinario, por la realización de este procedimiento, el cual ha sido plenamente explicado.
         </p>
 
         <p>
-            Soy consciente de que cualquier procedimiento quirúrgico y anestésico conlleva riesgos, incluyendo pero no limitándose a bradicardia, hipotermia, hipovolemia, hemorragias activas, parálisis, infecciones, reacciones adversas a la anestesia, desbalance electrolítico, anemia, necrosis tisular, sepsis, hipocalcemia, paro cardiorrespiratorio y fallecimiento tanto de la madre como de uno o varios cachorros, ya sea durante la cirugía, en el postquirúrgico inmediato o posteriormente en el hogar. Además, acepto que podrían ser necesarias intervenciones adicionales o exámenes complementarios si el equipo médico lo considera apropiado.
+            <strong>¿QUÉ ES LA EUTANASIA ANIMAL?</strong>
         </p>
 
         <p>
-            <strong>2. RIESGOS RELACIONADOS CON LOS CACHORROS</strong>
-        </p>
-
-        <p>
-            Entiendo que los cachorros pueden nacer con enfermedades genéticas o adquiridas tales como paladar hendido, labio leporino, cardiopatías, neuropatías, síndrome del nadador, anasarca, hernias, ectopia cordis, hidrocefalia, pectus excavatum, aplasia cutis congénita, así como diversas afecciones musculoesqueléticas, oculares, sanguíneas, entre otras. Muchos de estos padecimientos no se pueden detectar ni antes ni al momento del nacimiento, y no se garantiza la viabilidad ni el estado de salud de todos los neonatos.
+            El término "eutanasia" deriva del griego eu (bien) y thanatos (muerte), y se refiere a un procedimiento humanitario que busca proporcionar una muerte rápida, tranquila e indolora, con el objetivo de evitar o prolongar el sufrimiento del paciente. Este procedimiento se indica cuando el animal padece una enfermedad terminal o degenerativa o se encuentra en un estado de sufrimiento irreversible.
         </p>
     </div>
 
     <!-- Página 2 -->
-    <div class="container page-break" id="cesareaPage2">
+    <div class="container page-break" id="eutanasiaPage2">
         <div class="header">
             <img src="logo.jpg" alt="Veterinaria San Martin de Porres" class="logo">
-            <h1>CONSENTIMIENTO INFORMADO PARA CESÁREA</h1>
+            <h1>CONSENTIMIENTO INFORMADO PARA EUTANASIA EN MASCOTAS</h1>
             <div id="shortDate2" class="date-short"></div>
         </div>
 
         <p>
-            <strong>3. LIMITACIONES DE LA MEDICINA VETERINARIA:</strong> Estoy completamente claro(a) de que, pese a todos los esfuerzos médicos, la realización de exámenes de sangre complementarios, ultrasonidos y radiografías, mi mascota podría llegar a presentar complicaciones en cualquier momento que podrían comprometer su vida.
+            <strong>DECLARACIÓN Y RESPONSABILIDAD</strong>
         </p>
 
         <p>
-            <strong>4. PROCESO DE RECUPERACIÓN:</strong> Comprendo que la recuperación de mi mascota dependerá de su estado de salud general y del cumplimiento estricto de las indicaciones y cuidados posteriores a su egreso. Acepto la responsabilidad de seguir todas las recomendaciones médicas para garantizar una recuperación exitosa.
+            Declaro que he proporcionado información veraz sobre el estado actual de salud del animal, que he recibido una explicación completa por parte del profesional veterinario sobre la condición médica y las alternativas posibles, y que he resuelto todas mis dudas antes de tomar esta decisión.
         </p>
 
         <p>
-            <strong>5. AUTORIZACIÓN PARA DECISIONES DE EMERGENCIA:</strong> Autorizo expresamente al equipo veterinario a tomar decisiones médicas durante el procedimiento si identifican complicaciones imprevistas, siempre en el mejor interés de la salud de mi mascota y sus cachorros.
+            Estoy plenamente consciente de que esta es una decisión difícil que debe tomarse con responsabilidad y compasión, pensando en el bienestar del paciente, de su familia y del entorno. Entiendo que la calidad de vida debe considerarse tanto para la mascota como para los responsables de su cuidado.
         </p>
 
         <p>
-            <strong>6. COSTOS ADICIONALES:</strong> Entiendo que cualquier procedimiento, medicamento o tratamiento adicional que sea necesario debido a complicaciones imprevistas generará costos adicionales que acepto asumir.
+            <strong>APROBACIÓN FINAL</strong>
         </p>
 
         <p>
-            <strong>DECLARACIÓN FINAL:</strong> Hago constar que comprendo completamente el procedimiento que se va a realizar, sus riesgos, beneficios y alternativas. Se me han explicado y aclarado todas las dudas que me han surgido al respecto. Dejo a mi mascota por voluntad propia y con pleno conocimiento de lo expuesto.
+            Este procedimiento solo puede llevarse a cabo con el consentimiento explícito del propietario o su representante legal, así como con la aprobación profesional del médico veterinario responsable. Declaro que he reflexionado sobre esta decisión, comprendiendo sus implicaciones médicas, éticas y emocionales.
         </p>
 
         <p>
-            Firmo este documento en pleno uso de mis facultades mentales, afirmando que he leído y comprendido todo lo descrito, a las <strong id="cesareaTime">[Hora]</strong> horas, del día <strong id="cesareaDay">[Día]</strong> del mes de <strong id="cesareaMonth">[Mes]</strong> de <strong id="cesareaYear">[Año]</strong>.
+            Mi firma a continuación confirma que he leído y comprendido este formulario de consentimiento, y que autorizo el procedimiento de eutanasia para el paciente arriba mencionado.
+        </p>
+
+        <p>
+            Firmo este documento en pleno uso de mis facultades mentales, afirmando que he leído y comprendido todo lo descrito, a las <strong id="eutanasiaTime">[Hora]</strong> horas, del día <strong id="eutanasiaDay">[Día]</strong> del mes de <strong id="eutanasiaMonth">[Mes]</strong> de <strong id="eutanasiaYear">[Año]</strong>.
         </p>
 
         <div class="signature-area">
             <div class="firma-container">
-                <div class="signature-box">Firma y cédula del propietario</div>
+                <div class="signature-box">Firma del propietario o responsable</div>
                 <div class="signature-pad-container">
-                    <canvas class="signature-pad" id="cesareaSigPad" style="touch-action: none;"></canvas>
+                    <canvas class="signature-pad" id="eutanasiaSigPad" style="touch-action: none;"></canvas>
                     <div class="signature-buttons">
-                        <button type="button" onclick="clearSignature('cesareaSigPad')">Limpiar Firma</button>
+                        <button type="button" onclick="clearSignature('eutanasiaSigPad')">Limpiar Firma</button>
                     </div>
                 </div>
             </div>
@@ -437,10 +438,12 @@
             <button class="pdf-button" onclick="generatePDF()">Generar PDF</button>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Google Drive Integration -->
+    <script src="google-drive-config.js"></script>
+    <script src="google-drive-pdf-uploader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Autocompletado desde URL
@@ -453,8 +456,8 @@
                 'clienteTelefono': 'ownerPhone',
                 'clienteEmail': 'ownerEmail',
                 'mascotaNombre': 'petName',
-                'mascotaRaza': 'petBreed',
-                'mascotaEdad': 'petAge',
+                'mascotaEspecie': 'petSpecies',
+                'mascotaSexo': 'petSex',
                 'expediente': 'expedientNumber'
             };
 
@@ -471,18 +474,41 @@
 
             // Sincronizar datos en texto
             function syncData() {
-                const fields = ['ownerName', 'ownerCedula', 'petName', 'petBreed', 'expedientNumber'];
+                const fields = ['ownerName', 'ownerCedula', 'petName', 'petSpecies', 'petSex'];
                 fields.forEach(field => {
                     const input = document.getElementById(field);
                     const textSpan = document.getElementById(field + 'Text');
                     if (input && textSpan) {
+                        // Sincronizar valor inicial
                         textSpan.textContent = input.value || `[${input.placeholder}]`;
+                        // Agregar listener para cambios futuros
                         input.addEventListener('input', () => {
                             textSpan.textContent = input.value || `[${input.placeholder}]`;
                         });
                     }
                 });
             }
+
+            // Inicializar sincronización de datos
+            syncData();
+
+            // Ocultar banner si hay datos autocompletados
+            const hasAutoData = Object.values(autoFillMap).some(fieldId => 
+                document.getElementById(fieldId)?.value
+            );
+            if (hasAutoData) {
+                const banner = document.getElementById('autocompleteBanner');
+                if (banner) banner.style.display = 'none';
+                // Re-sincronizar después del autocompletado
+                setTimeout(() => syncData(), 100);
+            }
+
+            // Inicializar fechas y horas
+            const now = new Date();
+            document.getElementById('shortDate').textContent = now.toLocaleDateString('es-ES');
+            document.getElementById('shortDate2').textContent = now.toLocaleDateString('es-ES');
+            const shortDate3 = document.getElementById('shortDate3');
+            if (shortDate3) shortDate3.textContent = now.toLocaleDateString('es-ES');
             
             // Función para actualizar los datos de la página de observaciones
             function updateObservacionesPageData() {
@@ -508,32 +534,13 @@
             
             // Sincronizar datos iniciales
             setTimeout(updateObservacionesPageData, 200);
-
-            // Ocultar banner si hay datos autocompletados
-            const hasAutoData = Object.values(autoFillMap).some(fieldId => 
-                document.getElementById(fieldId)?.value
-            );
-            if (hasAutoData) {
-                const banner = document.getElementById('autocompleteBanner');
-                if (banner) banner.style.display = 'none';
-            }
-
-            // Inicializar fechas y horas
-            const now = new Date();
-            document.getElementById('shortDate').textContent = now.toLocaleDateString('es-ES');
-            document.getElementById('shortDate2').textContent = now.toLocaleDateString('es-ES');
-            const shortDate3 = document.getElementById('shortDate3');
-            if (shortDate3) shortDate3.textContent = now.toLocaleDateString('es-ES');
-            document.getElementById('cesareaTime').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('cesareaDay').textContent = now.getDate();
-            document.getElementById('cesareaMonth').textContent = now.toLocaleString('es-ES', { month: 'long' });
-            document.getElementById('cesareaYear').textContent = now.getFullYear();
-
-            // Inicializar sincronización de datos
-            syncData();
+            document.getElementById('eutanasiaTime').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('eutanasiaDay').textContent = now.getDate();
+            document.getElementById('eutanasiaMonth').textContent = now.toLocaleString('es-ES', { month: 'long' });
+            document.getElementById('eutanasiaYear').textContent = now.getFullYear();
 
             // Configurar firma digital
-            const canvas = document.getElementById('cesareaSigPad');
+            const canvas = document.getElementById('eutanasiaSigPad');
             function resizeCanvas(c) {
                 const ratio = Math.max(window.devicePixelRatio || 1, 2);
                 c.width = c.offsetWidth * ratio;
@@ -543,7 +550,7 @@
             resizeCanvas(canvas);
             
             window.signaturePads = { 
-                cesareaSigPad: new SignaturePad(canvas, {
+                eutanasiaSigPad: new SignaturePad(canvas, {
                     backgroundColor: 'rgba(255,255,255,0)',
                     penColor: 'rgb(0,0,100)',
                     minWidth: 0.3,
@@ -566,6 +573,55 @@
                 alert('Por favor complete el nombre del propietario y de la mascota antes de generar el PDF.');
                 return;
             }
+
+            // Verificar si las funciones de Google Drive están disponibles
+            if (typeof generateAndUploadPDF === 'undefined') {
+                console.warn('⚠️ Módulo de Google Drive no disponible, usando generación básica');
+                await generatePDFBasic();
+                return;
+            }
+
+            try {
+                // Generar nombre de archivo
+                const fileName = `Consentimiento_Eutanasia_${petName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+                
+                // Extraer metadata del formulario
+                const metadata = {
+                    clienteNombre: ownerName,
+                    clienteCedula: document.getElementById('ownerCedula').value || '',
+                    mascotaNombre: petName,
+                    mascotaEspecie: document.getElementById('petSpecies').value || '',
+                    tipoDocumento: 'Consentimiento Eutanasia',
+                    fechaGeneracion: new Date().toISOString()
+                };
+
+                // Actualizar datos en la página de observaciones antes de generar PDF
+                if (typeof updateObservacionesPageData === 'function') {
+                    updateObservacionesPageData();
+                }
+                
+                // Generar PDF y subir automáticamente a Google Drive
+                const result = await generateAndUploadPDF({
+                    pageElements: ['eutanasiaPage1', 'eutanasiaPage2', 'eutanasiaPage3'],
+                    fileName: fileName,
+                    folderType: 'eutanasia',
+                    metadata: metadata,
+                    autoUpload: true,  // Cambiar a false si no quieres subida automática
+                    downloadLocal: true // Cambiar a false si solo quieres subir a Drive
+                });
+
+                console.log('✅ PDF procesado:', result);
+                
+            } catch (error) {
+                console.error('❌ Error generando PDF:', error);
+                alert('Hubo un problema al generar el PDF. Por favor, inténtelo de nuevo.');
+            }
+        }
+
+        // Función de respaldo si Google Drive no está disponible
+        async function generatePDFBasic() {
+            const ownerName = document.getElementById('ownerName').value;
+            const petName = document.getElementById('petName').value;
             
             // Actualizar datos en la página de observaciones antes de generar PDF
             if (typeof updateObservacionesPageData === 'function') {
@@ -622,7 +678,7 @@
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 
                 // Página 1
-                const page1 = document.getElementById('cesareaPage1');
+                const page1 = document.getElementById('eutanasiaPage1');
                 const canvas1 = await html2canvas(page1, { 
                     scale: 1.5, 
                     useCORS: true, 
@@ -638,7 +694,7 @@
                 
                 // Página 2
                 pdf.addPage();
-                const page2 = document.getElementById('cesareaPage2');
+                const page2 = document.getElementById('eutanasiaPage2');
                 const canvas2 = await html2canvas(page2, { 
                     scale: 1.5, 
                     useCORS: true, 
@@ -653,7 +709,7 @@
                 
                 // Página 3 - Observaciones
                 pdf.addPage();
-                const page3 = document.getElementById('cesareaPage3');
+                const page3 = document.getElementById('eutanasiaPage3');
                 if (page3) {
                     const canvas3 = await html2canvas(page3, { 
                         scale: 1.5, 
@@ -669,7 +725,7 @@
                 }
                 
                 // Guardar PDF
-                const fileName = `Consentimiento_Cesarea_${petName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+                const fileName = `Consentimiento_Eutanasia_${petName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
                 pdf.save(fileName);
                 
             } catch (error) {
@@ -693,7 +749,7 @@
     </script>
 
     <!-- PÁGINA 3 - OBSERVACIONES/PADECIMIENTOS PREVIOS -->
-    <div class="container" id="cesareaPage3">
+    <div class="container" id="eutanasiaPage3">
         <div class="header">
             <img src="logo.jpg" alt="Veterinaria San Martin de Porres" class="logo">
             <h1>OBSERVACIONES / PADECIMIENTOS PREVIOS</h1>
