@@ -400,6 +400,15 @@
                 const imgH2 = (canvas2.height * imgW) / canvas2.width;
                 pdf.addImage(img2, 'JPEG', 10, 10, imgW, imgH2);
 
+                if (typeof appendAutorizacionRetiroTerceroToJsPdf === 'function') {
+                    try {
+                        await appendAutorizacionRetiroTerceroToJsPdf(pdf, { imgW });
+                    } catch (e) {
+                        if (e && e.message === 'autorizacion_retiro_invalid') return;
+                        throw e;
+                    }
+                }
+
                 // Guardar PDF
                 const fileName = `Consentimiento_Alta_Voluntaria_${petName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
                 pdf.save(fileName);
@@ -415,6 +424,7 @@
             }
         }
     </script>
+    <script src="modules/consentimientos/js/autorizacion-retiro-tercero.js"></script>
 </body>
 <script>
 // --- AUTOLLENADO DE DATOS DESDE LA URL ---

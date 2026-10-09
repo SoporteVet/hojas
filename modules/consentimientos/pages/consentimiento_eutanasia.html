@@ -706,6 +706,15 @@
                 const img2 = canvas2.toDataURL('image/jpeg', 0.8);
                 const imgH2 = (canvas2.height * imgW) / canvas2.width;
                 pdf.addImage(img2, 'JPEG', 10, 10, imgW, imgH2);
+
+                if (typeof appendAutorizacionRetiroTerceroToJsPdf === 'function') {
+                    try {
+                        await appendAutorizacionRetiroTerceroToJsPdf(pdf, { imgW });
+                    } catch (e) {
+                        if (e && e.message === 'autorizacion_retiro_invalid') return;
+                        throw e;
+                    }
+                }
                 
                 // Página 3 - Observaciones
                 pdf.addPage();
@@ -778,5 +787,6 @@
             </div>
         </div>
     </div>
+    <script src="../js/autorizacion-retiro-tercero.js"></script>
 </body>
 </html>
