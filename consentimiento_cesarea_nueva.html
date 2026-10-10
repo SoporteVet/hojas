@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <title>Consentimiento Cesárea</title>
     <link rel="stylesheet" href="modules/consentimientos/css/consentimiento-documento.css">
 </head>
@@ -268,7 +270,7 @@
                 if (response.ok) {
                     alert('Formulario de consentimiento guardado exitosamente!');
                     // Redirigir a la página de anestesia o a donde sea necesario
-                    window.location.href = 'consentimiento_anestesia.html';
+                    window.location.href='consentimiento_anestesia';
                 } else {
                     const errorData = await response.json();
                     alert(`Error al guardar el consentimiento: ${errorData.message || 'Desconocido'}`);

@@ -88,47 +88,47 @@ const ALLOWED_TEMPLATES_BY_SOURCE = {
 const CONSENT_TEMPLATES = {
     anestesia: {
         name: 'Autorización para Anestesia',
-        file: 'modules/consentimientos/pages/consentimiento_anestesia.html',
+        file: 'modules/consentimientos/pages/consentimiento_anestesia',
         description: 'Consentimiento para procedimientos bajo anestesia'
     },
     cirugia: {
         name: 'Consentimiento Cirugía',
-        file: 'modules/consentimientos/pages/consentimiento_cirugia.html',
+        file: 'modules/consentimientos/pages/consentimiento_cirugia',
         description: 'Autorización para procedimientos quirúrgicos'
     },
     emergencias: {
         name: 'Emergencias',
-        file: 'modules/emergencias/pages/Emergencias_Plantilla.html',
+        file: 'modules/emergencias/pages/Emergencias_Plantilla',
         description: 'Consentimiento para atención de emergencias'
     },
     transfusion: {
         name: 'Transfusión',
-        file: 'modules/laboratorio/pages/transfusion.html',
+        file: 'modules/laboratorio/pages/transfusion',
         description: 'Consentimiento para transfusión sanguínea'
     },
     cesarea: {
         name: 'Consentimiento Cesárea',
-        file: 'modules/consentimientos/pages/consentimiento_cesarea.html',
+        file: 'modules/consentimientos/pages/consentimiento_cesarea',
         description: 'Autorización para cesárea'
     },
     eutanasia: {
         name: 'Consentimiento Eutanasia',
-        file: 'modules/consentimientos/pages/consentimiento_eutanasia.html',
+        file: 'modules/consentimientos/pages/consentimiento_eutanasia',
         description: 'Autorización para eutanasia humanitaria'
     },
     alta_voluntaria: {
         name: 'Alta Voluntaria',
-        file: 'modules/consentimientos/pages/consentimiento_alta_voluntaria.html',
+        file: 'modules/consentimientos/pages/consentimiento_alta_voluntaria',
         description: 'Consentimiento informado por alta voluntaria'
     },
     control_anestesico: {
         name: 'Control Anestésico y Medicamentoso',
-        file: 'modules/quirofano/pages/control_anestesico.html',
+        file: 'modules/quirofano/pages/control_anestesico',
         description: 'Control de anestesia y medicamentos administrados durante cirugía'
     },
     internamiento: {
         name: 'Consentimiento Informado para Internamiento',
-        file: 'modules/internamiento/pages/internamiento.html',
+        file: 'modules/internamiento/pages/internamiento',
         description: 'Autorización para internamiento de mascota'
     }
 };
