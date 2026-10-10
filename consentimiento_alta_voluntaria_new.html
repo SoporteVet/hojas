@@ -1,88 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consentimiento Informado para Alta Voluntaria - <span id="shortDate"></span></title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.4; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; background: white; }
-        
-        /* Header */
-        .header { text-align: center; border-bottom: 3px solid #0066cc; padding-bottom: 15px; margin-bottom: 20px; }
-        .header h1 { color: #0066cc; font-size: 20px; margin-bottom: 5px; }
-        .header h2 { color: #333; font-size: 14px; font-weight: normal; }
-        
-        /* Banner */
-        .banner { background: #e3f2fd; border: 1px solid #bbdefb; padding: 15px; margin: 20px 0; border-radius: 5px; display: flex; align-items: center; }
-        .banner .icon { color: #1976d2; font-size: 20px; margin-right: 10px; }
-        .banner .content h3 { color: #1976d2; margin-bottom: 5px; font-size: 16px; }
-        .banner .content p { color: #333; font-size: 14px; margin: 0; }
-        
-        /* Form Grid */
-        .form-section { margin: 20px 0; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .form-group { display: flex; flex-direction: column; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-weight: 600; color: #333; margin-bottom: 5px; font-size: 14px; }
-        .form-group input, .form-group textarea, .form-group select { 
-            padding: 8px 12px; border: 2px solid #ddd; border-radius: 4px; font-size: 14px; 
-            transition: border-color 0.2s; outline: none; 
-        }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #0066cc; }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        
-        /* Content Text */
-        .content-text { text-align: justify; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; }
-        .content-text h3 { color: #0066cc; margin-bottom: 10px; font-size: 16px; }
-        .content-text p { margin-bottom: 10px; line-height: 1.6; font-size: 14px; }
-        .content-text ul { margin: 10px 0 10px 20px; }
-        .content-text li { margin-bottom: 5px; }
-        
-        /* Procedures Grid */
-        .procedures-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
-        .procedure-item { padding: 10px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0066cc; }
-        .procedure-item strong { color: #0066cc; }
-        
-        /* Signature Section */
-        .signature-section { margin: 30px 0; }
-        .signature-container { border: 2px solid #ddd; border-radius: 5px; padding: 15px; text-align: center; margin: 15px 0; }
-        .signature-pad { border: 1px solid #ccc; border-radius: 3px; background: white; }
-        .signature-buttons { margin-top: 10px; }
-        .signature-buttons button { 
-            background: #6c757d; color: white; border: none; padding: 8px 15px; 
-            border-radius: 3px; cursor: pointer; font-size: 12px; 
-        }
-        .signature-buttons button:hover { background: #5a6268; }
-        
-        /* PDF Button */
-        .pdf-button-container { text-align: center; margin: 30px 0; }
-        .pdf-button { 
-            background: #0066cc; color: white; border: none; padding: 15px 30px; 
-            border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 600; 
-        }
-        .pdf-button:hover { background: #0052a3; }
-        
-        /* Signature Line */
-        .signature-line { border-bottom: 1px solid #333; margin: 10px 0; height: 1px; position: relative; }
-        .signature-label { font-size: 12px; color: #666; margin-top: 5px; }
-        
-        /* Print Styles */
-        @media print {
-            .banner, .pdf-button-container, .signature-buttons { display: none !important; }
-            .container { padding: 10px; max-width: none; }
-            body { font-size: 12px; }
-            .form-group input, .form-group textarea, .form-group select { border: none; border-bottom: 1px solid #333; background: transparent; }
-            .content-text { background: transparent; }
-            .page-break { page-break-before: always; }
-        }
-        
-        @media (max-width: 768px) {
-            .form-grid, .procedures-grid { grid-template-columns: 1fr; }
-            .container { padding: 15px; }
-        }
-    </style>
+    <title>Consentimiento Informado para Alta Voluntaria</title>
+    <link rel="stylesheet" href="modules/consentimientos/css/consentimiento-documento.css">
 </head>
 <body>
     <!-- Página 1 -->
@@ -221,7 +143,7 @@
         <div class="signature-section">
             <p style="text-align: center; margin-bottom: 20px;"><strong>FIRMA DEL PROPIETARIO</strong></p>
             <div class="signature-container">
-                <canvas id="altaSigPad" class="signature-pad" width="400" height="150"></canvas>
+                <canvas id="altaSigPad" class="signature-pad"></canvas>
                 <div class="signature-buttons">
                     <button type="button" onclick="clearSignature('altaSigPad')">Limpiar Firma</button>
                 </div>

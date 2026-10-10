@@ -89,12 +89,12 @@
         page.className = 'autorizacion-retiro-tercero-page';
         page.style.display = 'none';
         page.innerHTML = `
-            <div class="header" style="display:flex;align-items:center;margin-bottom:20px;border-bottom:3px solid #63c5da;padding-bottom:15px;justify-content:space-between;">
-                <img src="${logoSrc}" alt="Veterinaria San Martín de Porres" class="logo" style="max-width:80px;margin-right:15px;border-radius:10px;">
-                <h1 id="autRetiroTituloHoja" style="text-align:center;margin:0;color:#3a7ca5;flex-grow:1;font-size:1.35rem;">AUTORIZACIÓN PARA RETIRAR O DEJAR MASCOTA POR TERCERA PERSONA</h1>
+            <div class="header" style="display:flex;align-items:center;margin-bottom:20px;border-bottom:3px solid #4a90e2;padding-bottom:15px;justify-content:space-between;">
+                <img src="${logoSrc}" alt="Veterinaria San Martín de Porres" class="logo" style="max-width:80px;margin-right:15px;border:none;border-radius:0;box-shadow:none;">
+                <h1 id="autRetiroTituloHoja" style="text-align:center;margin:0;color:#4a90e2;flex-grow:1;font-size:1.35rem;">AUTORIZACIÓN PARA RETIRAR O DEJAR MASCOTA POR TERCERA PERSONA</h1>
                 <div class="date-short autorizacion-retiro-fecha"></div>
             </div>
-            <p style="margin:0 0 12px;font-weight:600;color:#3a7ca5;">Acción autorizada: <span id="autRetiroEtiquetaAccion">(seleccione retirar o dejar)</span></p>
+            <p style="margin:0 0 12px;font-weight:600;color:#4a90e2;">Acción autorizada: <span id="autRetiroEtiquetaAccion">(seleccione retirar o dejar)</span></p>
             <p id="autRetiroParrafo1" style="text-align:justify;line-height:1.8;"></p>
             <p id="autRetiroParrafo2" style="text-align:justify;line-height:1.8;"></p>
             <div style="background:#f8f9fa;padding:15px;border-radius:8px;margin:20px 0;">
@@ -106,7 +106,7 @@
                 Ratifico que la firma que aparece a continuación es la misma que firmé en el consentimiento principal de este expediente, y con ella confirmo esta autorización sin necesidad de firmar nuevamente.
             </p>
             <div class="signature-area" style="display:flex;justify-content:center;margin-top:30px;">
-                <div class="firma-container" style="flex:1;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+                <div class="firma-container" style="width:100%;max-width:100%;">
                     <div class="signature-box" style="width:100%;padding:10px;text-align:center;margin-bottom:10px;border-radius:5px;background:#f8f9fa;font-weight:500;">
                         Firma del propietario (copia del consentimiento principal)
                     </div>
@@ -122,7 +122,7 @@
     function buildCheckboxSection() {
         const section = document.createElement('div');
         section.className = 'autorizacion-retiro-checkbox-section checkbox-section';
-        section.style.cssText = 'margin:24px 0;padding:15px;background:#f8f9fa;border-radius:8px;border-left:4px solid #3a7ca5;';
+        section.style.cssText = 'margin:24px 0;padding:15px;background:#f8f9fa;border-radius:8px;border-left:4px solid #4a90e2;';
         section.innerHTML = `
             <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:1rem;line-height:1.5;">
                 <input type="checkbox" id="chkAutorizacionRetiroTercero" style="margin-top:4px;transform:scale(1.2);flex-shrink:0;">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,39 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        :root { --primary-color:#3a7ca5; --secondary-color:#f8f9fa; --accent-color:#63c5da; --text-color:#2c3e50; --border-color:#d1e7f0; --shadow-color:rgba(0,0,0,0.1); }
-        body{font-family:'Segoe UI',Arial,sans-serif;margin:0;padding:20px;background:#f5f7fa;color:var(--text-color);}
-        .container{width:800px;margin:0 auto;padding:30px;background:white;border:1px solid var(--border-color);box-shadow:0 5px 20px var(--shadow-color);border-radius:12px;margin-bottom:40px;page-break-after:always;}
-        .container:last-child{page-break-after:auto;}
-        .header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--accent-color);padding-bottom:15px;margin-bottom:20px;}
-        .logo{max-width:80px;border-radius:10px;box-shadow:0 2px 5px var(--shadow-color);}
-        h1{flex:1;text-align:center;color:var(--primary-color);font-size:1.6rem;text-shadow:1px 1px 2px var(--shadow-color);}
-        .date-short{font-size:0.9rem;font-weight:bold;}
-        p, ul{margin-bottom:20px;line-height:1.6;text-align:justify;}
-        ul{padding-left:20px;}
-        label{font-weight:bold;}
-        input[type="text"]{border:none;background:transparent;font-weight:bold;min-height:35px;padding:8px 12px;width:300px;}
-        input[type="text"]:focus{outline:none;background:var(--secondary-color);}
-        .notice{background:var(--secondary-color);padding:15px;border-radius:6px;margin-bottom:20px;}
-        .autofill-banner{background:linear-gradient(135deg,#e3f2fd,#bbdefb);padding:12px 20px;border-radius:8px;margin-bottom:20px;border-left:4px solid var(--accent-color);font-size:0.95rem;color:var(--primary-color);}
-        .autofill-banner .icon{margin-right:8px;font-weight:bold;}
-        .signature-area{display:flex;justify-content:center;margin-top:40px;}
-        .firma-container{display:flex;flex-direction:column;align-items:center;flex:1;}
-        .signature-box{background:var(--secondary-color);padding:10px;border-radius:5px;width:100%;text-align:center;margin-bottom:10px;font-weight:500;}
-        .signature-pad{width:100%;height:200px;border:2px dashed var(--border-color);border-radius:8px;background:white;box-shadow:0 2px 8px var(--shadow-color);}
-        .signature-buttons{margin-top:10px;}
-        .pdf-button-container{text-align:center;margin-top:30px;}
-        .pdf-button{padding:12px 25px;background:#4CAF50;color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer;}
-        .pdf-button:hover{background:#45a049;}
-        .autocomplete-banner{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border:1px solid #2196f3;color:#1565c0;padding:12px 20px;margin-bottom:20px;border-radius:8px;font-size:0.9rem;box-shadow:0 2px 8px rgba(33,150,243,0.15);}
-        .autocomplete-banner strong{color:#0d47a1;}
-        input[type="text"]{border:none;background:transparent;font-weight:bold;min-height:35px;padding:8px 12px;border-bottom:1px solid transparent;}
-        input[type="text"]:focus{outline:none;background:var(--secondary-color);border-bottom:1px solid var(--accent-color);}
-        input[type="text"]:-webkit-autofill,input[type="text"]:-webkit-autofill:hover,input[type="text"]:-webkit-autofill:focus{-webkit-box-shadow:0 0 0px 1000px white inset;-webkit-text-fill-color:var(--text-color)!important;background:white!important;}
-        @media print{.autofill-banner,.autocomplete-banner,.pdf-button-container{display:none!important;}body{background:white!important;}.container{box-shadow:none!important;border:none!important;}}
-        .pdf-generation .autofill-banner,.pdf-generation .autocomplete-banner,.pdf-generation .pdf-button-container{display:none!important;}
-    </style>
+    <link rel="stylesheet" href="modules/consentimientos/css/consentimiento-documento.css">
 </head>
 <body>
     <!-- PÁGINA 1 -->

@@ -3,132 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selección de plantillas</title>
+    <title>Plantillas documentales | Veterinaria San Martín de Porres</title>
     <style>
         :root {
-            --primary-color: #3a7ca5;
-            --secondary-color: #f8f9fa;
-            --accent-color: #63c5da;
-            --text-color: #2c3e50;
-            --border-color: #d1e7f0;
-            --highlight-color: #e3f2fd;
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --bg: #f0f2f5;
+            --surface: #ffffff;
+            --surface-hover: #fafbfc;
+            --text: #1a2332;
+            --text-muted: #5c6b7f;
+            --text-subtle: #8b98a8;
+            --border: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --brand: #4a90e2;
+            --brand-light: #eaf2fc;
+            --accent: #4a90e2;
+            --shadow-sm: 0 1px 2px rgba(26, 35, 50, 0.04);
+            --shadow-md: 0 4px 16px rgba(26, 35, 50, 0.06), 0 1px 3px rgba(26, 35, 50, 0.04);
+            --shadow-lg: 0 12px 40px rgba(26, 35, 50, 0.08);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --font-sans: Arial, Helvetica, sans-serif;
+            --font-display: var(--font-sans);
+            --font-body: var(--font-sans);
         }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            color: var(--text-color);
-            background-color: #f5f7fa;
-            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4eff5 100%);
             min-height: 100vh;
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(74, 144, 226, 0.1), transparent),
+                linear-gradient(180deg, #f4f6f8 0%, var(--bg) 100%);
+            -webkit-font-smoothing: antialiased;
         }
-        .main-menu-container {
-            width: 100%;
+
+        .shell {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 32px 20px 48px;
+        }
+
+        .top-bar {
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            margin-bottom: 40px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
         }
-        .main-menu {
-            background: linear-gradient(120deg, #e3f2fd 0%, #f8f9fa 100%);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px var(--shadow-color);
-            padding: 32px 24px 24px 24px;
-            max-width: 700px;
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-        .menu-logo {
-            max-width: 90px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 8px var(--shadow-color);
+
+        .brand-logo {
+            width: 56px;
+            height: auto;
+            max-height: 56px;
+            object-fit: contain;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
         }
-        .main-menu h2 {
-            color: var(--primary-color);
+
+        .brand-text h1 {
+            margin: 0;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            line-height: 1.25;
+        }
+
+        .brand-text p {
+            margin: 4px 0 0;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .page-intro {
             margin-bottom: 28px;
+        }
+
+        .page-intro h2 {
+            margin: 0 0 6px;
+            font-family: var(--font-display);
             font-size: 1.5rem;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text);
         }
-        .menu-options {
+
+        .page-intro p {
+            margin: 0;
+            max-width: 52ch;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+
+        .section-label {
             display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 14px;
+            font-family: var(--font-display);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-subtle);
         }
-        .menu-card {
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .template-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .template-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .template-card:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .template-card__icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 200px;
-            height: 70px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            color: var(--primary-color);
+            border-radius: 10px;
+            background: var(--brand-light);
+            color: var(--brand);
+        }
+
+        .template-card__icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .template-card--emergencias .template-card__icon { background: #fdecea; color: #b42318; }
+        .template-card--eutanasia .template-card__icon { background: #f3f4f6; color: #4b5563; }
+        .template-card--cirugia .template-card__icon,
+        .template-card--cesarea .template-card__icon { background: #fff4e6; color: #c05621; }
+        .template-card--internamiento .template-card__icon { background: #eaf2fc; color: #4a90e2; }
+        .template-card--transfusion .template-card__icon { background: #f3e8ff; color: #7c3aed; }
+        .template-card--alta .template-card__icon { background: #eaf2fc; color: #4a90e2; }
+
+        .template-card__body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .template-card__title {
+            margin: 0 0 4px;
+            font-family: var(--font-display);
+            font-size: 0.9375rem;
             font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
-            border: 2px solid var(--border-color);
-            position: relative;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            line-height: 1.3;
         }
-        .menu-card:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 6px 18px var(--shadow-color);
-            border-color: var(--primary-color);
+
+        .template-card__desc {
+            margin: 0;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
-        .menu-card.anestesia { border-left: 6px solid #3a7ca5; }
-        .menu-card.cirugia { border-left: 6px solid #e67e22; }
-        .menu-card.emergencias { border-left: 6px solid #c0392b; }
-        .menu-card.internamiento { border-left: 6px solid #16a085; }
-        .menu-card.transfusion { border-left: 6px solid #8e44ad; }
-        .menu-card.cesarea { border-left: 6px solid #d35400; }
-        .menu-card.eutanasia { border-left: 6px solid #b71c1c; }
-        .menu-card.alta-voluntaria { border-left: 6px solid #2e7d32; }
-        @media (max-width: 800px) {
-            .main-menu { max-width: 98vw; }
-            .menu-card { width: 98vw; max-width: 320px; }
+
+        .template-card__arrow {
+            flex-shrink: 0;
+            align-self: center;
+            color: var(--text-subtle);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.2s, transform 0.2s, color 0.2s;
+        }
+
+        .template-card:hover .template-card__arrow {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--accent);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+            padding-top: 8px;
+        }
+
+        @media (max-width: 640px) {
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .page-intro h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .template-card,
+            .template-card__arrow {
+                transition: none;
+            }
+            .template-card:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="main-menu-container">
-        <div class="main-menu">
-            <img src="logo.jpg" alt="Veterinaria San Martin de Porres" class="menu-logo">
-            <h2>SELECCIONA UNA PLANTILLA</h2>
-            <div class="menu-options">
-                <a href="consentimiento_anestesia.html" class="menu-card anestesia">
-                    <span>Autorización para Anestesia</span>
-                </a>
-                <a href="consentimiento_cirugia.html" class="menu-card cirugia">
-                    <span>Consentimiento Cirugía</span>
-                </a>
-                <a href="Emergencias_Plantilla.html" class="menu-card emergencias">
-                    <span>Emergencias</span>
-                </a>
-                <a href="internamiento.html" class="menu-card internamiento">
-                    <span>Internamiento</span>
-                </a>
-                <a href="transfusion.html" class="menu-card transfusion">
-                    <span>Transfusión</span>
-                </a>
-                <a href="consentimiento_cesarea.html" class="menu-card cesarea">
-                    <span>Consentimiento Cesárea</span>
-                </a>
-                <a href="consentimiento_eutanasia.html" class="menu-card eutanasia">
-                    <span>Consentimiento Eutanasia</span>
-                </a>
-                <a href="consentimiento_alta_voluntaria.html" class="menu-card alta-voluntaria">
-                    <span>Alta Voluntaria</span>
-                </a>
+    <div class="shell">
+        <header class="top-bar">
+            <div class="brand">
+                <img src="logo.jpg" alt="" class="brand-logo" width="56" height="56">
+                <div class="brand-text">
+                    <h1>Veterinaria San Martín de Porres</h1>
+                    <p>Documentos y consentimientos informados</p>
+                </div>
             </div>
+        </header>
+
+        <div class="page-intro">
+            <h2>Seleccionar plantilla</h2>
+            <p>Elija el documento que desea completar. Los formularios se abren listos para imprimir o exportar a PDF.</p>
         </div>
+
+        <p class="section-label">Procedimientos y autorizaciones</p>
+        <nav class="template-grid" aria-label="Plantillas de consentimiento">
+            <a href="consentimiento_anestesia.html" class="template-card">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M8 6h8M6 10h12v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10z"/><path d="M9 14h6M9 18h4"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Autorización para anestesia</span>
+                    <span class="template-card__desc">Consentimiento para procedimientos bajo anestesia general o sedación.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="consentimiento_cirugia.html" class="template-card template-card--cirugia">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 4l6 6-8 8-6-6 8-8z"/><path d="M4 20l4-4"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Consentimiento cirugía</span>
+                    <span class="template-card__desc">Autorización quirúrgica, riesgos y cuidados postoperatorios.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="consentimiento_cesarea.html" class="template-card template-card--cesarea">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Consentimiento cesárea</span>
+                    <span class="template-card__desc">Procedimiento obstétrico y autorización para la madre y cachorros.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="consentimiento_eutanasia.html" class="template-card template-card--eutanasia">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 21s-6-4.5-6-10a6 6 0 0 1 12 0c0 5.5-6 10-6 10z"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Consentimiento eutanasia</span>
+                    <span class="template-card__desc">Decisión informada y autorización del procedimiento humanitario.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="consentimiento_alta_voluntaria.html" class="template-card template-card--alta">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Alta voluntaria</span>
+                    <span class="template-card__desc">Retiro anticipado del paciente y aceptación de riesgos asociados.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+        </nav>
+
+        <p class="section-label">Atención clínica</p>
+        <nav class="template-grid" aria-label="Plantillas de atención">
+            <a href="Emergencias_Plantilla.html" class="template-card template-card--emergencias">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Emergencias</span>
+                    <span class="template-card__desc">Consentimiento para atención de urgencia y estabilización.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="internamiento.html" class="template-card template-card--internamiento">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Internamiento</span>
+                    <span class="template-card__desc">Autorización para hospitalización y cuidados en clínica.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+
+            <a href="transfusion.html" class="template-card template-card--transfusion">
+                <span class="template-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                </span>
+                <span class="template-card__body">
+                    <span class="template-card__title">Transfusión</span>
+                    <span class="template-card__desc">Consentimiento para transfusión sanguínea y riesgos asociados.</span>
+                </span>
+                <span class="template-card__arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+            </a>
+        </nav>
+
+        <p class="footer-note">Uso interno — Clínica Veterinaria San Martín de Porres</p>
     </div>
 </body>
 </html>
